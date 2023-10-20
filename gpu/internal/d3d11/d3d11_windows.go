@@ -13,8 +13,8 @@ import (
 	"golang.org/x/sys/windows"
 
 	"gioui.org/gpu/internal/driver"
-	"gioui.org/internal/d3d11"
 	"gioui.org/shader"
+	"github.com/MTGArenaChat/gio/internal/d3d11"
 )
 
 type Backend struct {

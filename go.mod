@@ -1,6 +1,6 @@
-module gioui.org
+module github.com/MTGArenaChat/gio
 
-go 1.19
+go 1.21
 
 require (
 	eliasnaur.com/font v0.0.0-20230308162249-dd43949cb42d
@@ -13,4 +13,7 @@ require (
 	golang.org/x/sys v0.0.0-20220825204002-c680a09ffe64
 )
 
-require golang.org/x/text v0.7.0
+require (
+	gioui.org v0.3.1
+	golang.org/x/text v0.7.0
+)

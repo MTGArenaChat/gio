@@ -7,7 +7,7 @@ package app
 import (
 	"golang.org/x/sys/windows"
 
-	"gioui.org/internal/egl"
+	"github.com/MTGArenaChat/gio/internal/egl"
 )
 
 type glContext struct {

@@ -34,7 +34,7 @@ import (
 	"runtime"
 
 	"gioui.org/gpu"
-	"gioui.org/internal/gl"
+	"github.com/MTGArenaChat/gio/internal/gl"
 )
 
 type context struct {

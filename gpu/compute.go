@@ -22,16 +22,16 @@ import (
 
 	"gioui.org/cpu"
 	"gioui.org/gpu/internal/driver"
-	"gioui.org/internal/byteslice"
-	"gioui.org/internal/f32"
-	"gioui.org/internal/f32color"
-	"gioui.org/internal/ops"
-	"gioui.org/internal/scene"
 	"gioui.org/layout"
 	"gioui.org/op"
 	"gioui.org/shader"
 	"gioui.org/shader/gio"
 	"gioui.org/shader/piet"
+	"github.com/MTGArenaChat/gio/internal/byteslice"
+	"github.com/MTGArenaChat/gio/internal/f32"
+	"github.com/MTGArenaChat/gio/internal/f32color"
+	"github.com/MTGArenaChat/gio/internal/ops"
+	"github.com/MTGArenaChat/gio/internal/scene"
 )
 
 type compute struct {

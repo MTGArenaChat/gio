@@ -5,9 +5,9 @@
 package profile
 
 import (
-	"gioui.org/internal/ops"
 	"gioui.org/io/event"
 	"gioui.org/op"
+	"github.com/MTGArenaChat/gio/internal/ops"
 )
 
 // Op registers a handler for receiving

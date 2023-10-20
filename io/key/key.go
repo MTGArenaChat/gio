@@ -16,9 +16,9 @@ import (
 	"strings"
 
 	"gioui.org/f32"
-	"gioui.org/internal/ops"
 	"gioui.org/io/event"
 	"gioui.org/op"
+	"github.com/MTGArenaChat/gio/internal/ops"
 )
 
 // InputOp declares a handler ready for key events.

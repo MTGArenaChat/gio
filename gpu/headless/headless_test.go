@@ -7,10 +7,10 @@ import (
 	"image/color"
 	"testing"
 
-	"gioui.org/internal/f32color"
 	"gioui.org/op"
 	"gioui.org/op/clip"
 	"gioui.org/op/paint"
+	"github.com/MTGArenaChat/gio/internal/f32color"
 )
 
 func TestHeadless(t *testing.T) {

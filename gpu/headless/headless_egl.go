@@ -6,7 +6,7 @@
 package headless
 
 import (
-	"gioui.org/internal/egl"
+	"github.com/MTGArenaChat/gio/internal/egl"
 )
 
 func init() {

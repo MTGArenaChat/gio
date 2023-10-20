@@ -6,13 +6,13 @@ import (
 	"image"
 	"image/color"
 
-	"gioui.org/internal/f32color"
 	"gioui.org/io/semantic"
 	"gioui.org/layout"
 	"gioui.org/op"
 	"gioui.org/op/clip"
 	"gioui.org/op/paint"
 	"gioui.org/widget"
+	"github.com/MTGArenaChat/gio/internal/f32color"
 )
 
 type SwitchStyle struct {

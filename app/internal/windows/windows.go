@@ -133,7 +133,9 @@ const (
 	CFS_POINT        = 0x0002
 	CFS_CANDIDATEPOS = 0x0040
 
-	HWND_TOPMOST = ^(uint32(1) - 1) // -1
+	// Code here needs to be made compatible with x64 and x32. 
+	// THis is only for x64, old code was for x32
+	HWND_TOPMOST = uintptr(^(uint64(1) - 1)) // -1
 
 	HTCAPTION     = 2
 	HTCLIENT      = 1
@@ -300,6 +302,9 @@ const (
 	WS_EX_APPWINDOW  = 0x00040000
 	WS_EX_WINDOWEDGE = 0x00000100
 
+	WS_EX_LAYERED     = 0x00080000
+	WS_EX_TRANSPARENT = 0x00000020
+
 	QS_ALLINPUT = 0x04FF
 
 	MWMO_WAITALL        = 0x0001
@@ -389,12 +394,15 @@ var (
 	_TranslateMessage            = user32.NewProc("TranslateMessage")
 	_UnregisterClass             = user32.NewProc("UnregisterClassW")
 	_UpdateWindow                = user32.NewProc("UpdateWindow")
+	_SetLayeredWindowAttributes  = user32.NewProc("SetLayeredWindowAttributes")
 
 	shcore            = syscall.NewLazySystemDLL("shcore")
 	_GetDpiForMonitor = shcore.NewProc("GetDpiForMonitor")
 
-	gdi32          = syscall.NewLazySystemDLL("gdi32")
-	_GetDeviceCaps = gdi32.NewProc("GetDeviceCaps")
+	gdi32             = syscall.NewLazySystemDLL("gdi32")
+	_GetDeviceCaps    = gdi32.NewProc("GetDeviceCaps")
+	_GetStockObject   = gdi32.NewProc("GetStockObject")
+	_CreateSolidBrush = gdi32.NewProc("CreateSolidBrush")
 
 	imm32                    = syscall.NewLazySystemDLL("imm32")
 	_ImmGetContext           = imm32.NewProc("ImmGetContext")
@@ -442,6 +450,16 @@ func CreateWindowEx(dwExStyle uint32, lpClassName uint16, lpWindowName string, d
 		return 0, fmt.Errorf("CreateWindowEx failed: %v", err)
 	}
 	return syscall.Handle(hwnd), nil
+}
+
+func SetLayeredWindowAttributes(hwnd syscall.Handle) {
+	// https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setlayeredwindowattributes
+	const color uint32 = 0x00000000
+	const transparency uint8 = 200
+	// with 2 it create a overall transparacy, with 1 it makes the color transparent, so any thing with the specific color is transparent
+	// additionaly with 1 where there is no pixel being displayed, you can click on windows behind
+	const mode uint32 = 0x00000002
+	_SetLayeredWindowAttributes.Call(uintptr(hwnd), uintptr(color), uintptr(transparency), uintptr(mode))
 }
 
 func DefWindowProc(hwnd syscall.Handle, msg uint32, wparam, lparam uintptr) uintptr {
@@ -493,6 +511,7 @@ func GetClipboardData(format uint32) (syscall.Handle, error) {
 	return syscall.Handle(r), nil
 }
 
+// Returns a hdc
 func GetDC(hwnd syscall.Handle) (syscall.Handle, error) {
 	hdc, _, err := _GetDC.Call(uintptr(hwnd))
 	if hdc == 0 {
@@ -655,7 +674,7 @@ func SetWindowPlacement(hwnd syscall.Handle, wp *WindowPlacement) {
 	_SetWindowPlacement.Call(uintptr(hwnd), uintptr(unsafe.Pointer(wp)))
 }
 
-func SetWindowPos(hwnd syscall.Handle, hwndInsertAfter uint32, x, y, dx, dy int32, style uintptr) {
+func SetWindowPos(hwnd syscall.Handle, hwndInsertAfter uintptr, x, y, dx, dy int32, style uintptr) {
 	_SetWindowPos.Call(uintptr(hwnd), uintptr(hwndInsertAfter),
 		uintptr(x), uintptr(y),
 		uintptr(dx), uintptr(dy),
@@ -835,6 +854,27 @@ func UnregisterClass(cls uint16, hInst syscall.Handle) {
 
 func UpdateWindow(hwnd syscall.Handle) {
 	_UpdateWindow.Call(uintptr(hwnd))
+}
+
+// Some real fucking dumb shit I think
+// https://learn.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-getstockobject?redirectedfrom=MSDN
+// What the fuck are the different values, it doesnt say
+// not a handle but really a HGDIOBJ which is a handle
+func GetStockObject(i int) (syscall.Handle, error) {
+	r1, r2, err := _GetStockObject.Call(uintptr(i))
+	fmt.Println(r1)
+	fmt.Println(r2)
+	fmt.Println(err)
+	return syscall.Handle(r1), err
+}
+
+//https://learn.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-createsolidbrush
+//typedef HANDLE HBRUSH;
+func CreateSolidBrush(color uint32)(syscall.Handle, error){
+	r1, _, err := _CreateSolidBrush.Call(uintptr(color))
+	fmt.Println(r1)
+	fmt.Println(err)
+	return syscall.Handle(r1), err
 }
 
 func (p WindowPlacement) Rect() Rect {

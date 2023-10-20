@@ -130,6 +130,11 @@ func initResources() error {
 	}
 	resources.cursor = c
 	icon, _ := windows.LoadImage(hInst, iconID, windows.IMAGE_ICON, 0, 0, windows.LR_DEFAULTSIZE|windows.LR_SHARED)
+/* 	colllor, err := windows.CreateSolidBrush(0x0000FF00)
+	if err != nil {
+		fmt.Println(err)
+		//The operation completed successfully.
+	} */
 	wcls := windows.WndClassEx{
 		CbSize:        uint32(unsafe.Sizeof(windows.WndClassEx{})),
 		Style:         windows.CS_HREDRAW | windows.CS_VREDRAW | windows.CS_OWNDC,
@@ -137,6 +142,8 @@ func initResources() error {
 		HInstance:     hInst,
 		HIcon:         icon,
 		LpszClassName: syscall.StringToUTF16Ptr("GioWindow"),
+		// maybe brush, idk why i was getting the hgbi obj rference
+		//HbrBackground: colllor,
 	}
 	cls, err := windows.RegisterClassEx(&wcls)
 	if err != nil {
@@ -158,11 +165,17 @@ func createNativeWindow() (*window, error) {
 	}
 	const dwStyle = windows.WS_OVERLAPPEDWINDOW
 
+	// https://learn.microsoft.com/en-us/windows/win32/winmsg/extended-window-styles
+	// Replace dwExStyle with this tag, which sets up WS_EX_LAYERED
+	// Then uncomment SetLayerdWindowAttributes
+	// Adding ws_ex_transparent allows my mouse to pass through :)
+	// HERE
+	const myStyle = windows.WS_EX_LAYERED //| windows.WS_EX_TRANSPARENT //| windows.WS_MAXIMIZE
 	hwnd, err := windows.CreateWindowEx(
-		dwExStyle,
+		myStyle,
 		resources.class,
 		"",
-		dwStyle|windows.WS_CLIPSIBLINGS|windows.WS_CLIPCHILDREN,
+		myStyle, // Doesn't seem to have any effect
 		windows.CW_USEDEFAULT, windows.CW_USEDEFAULT,
 		windows.CW_USEDEFAULT, windows.CW_USEDEFAULT,
 		0,
@@ -172,6 +185,8 @@ func createNativeWindow() (*window, error) {
 	if err != nil {
 		return nil, err
 	}
+
+	windows.SetLayeredWindowAttributes(hwnd)
 	w := &window{
 		hwnd: hwnd,
 	}
@@ -437,6 +452,9 @@ func windowProc(hwnd syscall.Handle, msg uint32, wParam, lParam uintptr) uintptr
 	return windows.DefWindowProc(hwnd, msg, wParam, lParam)
 }
 
+
+// If we comment out WM_PAINT and WM_ERASEBKGND we get the bacgkround color that we set HbrBackground: 
+// I think the erase has something more with doing i return there
 func getModifiers() key.Modifiers {
 	var kmods key.Modifiers
 	if windows.GetKeyState(windows.VK_LWIN)&0x1000 != 0 || windows.GetKeyState(windows.VK_RWIN)&0x1000 != 0 {
@@ -727,8 +745,19 @@ func (w *window) Configure(options []Option) {
 		height = mi.Monitor.Bottom - mi.Monitor.Top
 		showMode = windows.SW_SHOW
 	}
+
+	//HERE: Make this some kind of settings,
+	w.config.AlwaysOnTop = true
+	var hwndInsertAfter uintptr
+	if w.config.AlwaysOnTop {
+		hwndInsertAfter = windows.HWND_TOPMOST
+		// NOMOVE prevents
+		// Can't do this swpStyle if fullscreen, works nice on maximized
+		swpStyle = windows.SWP_NOMOVE | windows.SWP_NOSIZE // NoZORDER is bad
+	}
+
 	windows.SetWindowLong(w.hwnd, windows.GWL_STYLE, style)
-	windows.SetWindowPos(w.hwnd, 0, x, y, width, height, swpStyle)
+	windows.SetWindowPos(w.hwnd, hwndInsertAfter, x, y, width, height, swpStyle)
 	windows.ShowWindow(w.hwnd, showMode)
 
 	w.update()

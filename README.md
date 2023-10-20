@@ -1,5 +1,10 @@
 # Gio - https://gioui.org
 
+## Why A Fork
+This is forked so we can support window transparency. Currently needs to be cleaned up and implemented across platforms
+before a pull request can be made to the real repo.
+
+
 Immediate mode GUI programs in Go for Android, iOS, macOS, Linux,
 FreeBSD, OpenBSD, Windows, and WebAssembly (experimental).
 

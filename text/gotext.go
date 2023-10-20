@@ -23,11 +23,11 @@ import (
 	"gioui.org/f32"
 	giofont "gioui.org/font"
 	"gioui.org/font/opentype"
-	"gioui.org/internal/debug"
 	"gioui.org/io/system"
 	"gioui.org/op"
 	"gioui.org/op/clip"
 	"gioui.org/op/paint"
+	"github.com/MTGArenaChat/gio/internal/debug"
 )
 
 // document holds a collection of shaped lines and alignment information for

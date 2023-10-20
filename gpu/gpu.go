@@ -19,16 +19,16 @@ import (
 	"unsafe"
 
 	"gioui.org/gpu/internal/driver"
-	"gioui.org/internal/byteslice"
-	"gioui.org/internal/f32"
-	"gioui.org/internal/f32color"
-	"gioui.org/internal/ops"
-	"gioui.org/internal/scene"
-	"gioui.org/internal/stroke"
 	"gioui.org/layout"
 	"gioui.org/op"
 	"gioui.org/shader"
 	"gioui.org/shader/gio"
+	"github.com/MTGArenaChat/gio/internal/byteslice"
+	"github.com/MTGArenaChat/gio/internal/f32"
+	"github.com/MTGArenaChat/gio/internal/f32color"
+	"github.com/MTGArenaChat/gio/internal/ops"
+	"github.com/MTGArenaChat/gio/internal/scene"
+	"github.com/MTGArenaChat/gio/internal/stroke"
 
 	// Register backends.
 	_ "gioui.org/gpu/internal/d3d11"

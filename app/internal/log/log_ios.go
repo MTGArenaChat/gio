@@ -22,7 +22,7 @@ import (
 	"log"
 	"unsafe"
 
-	_ "gioui.org/internal/cocoainit"
+	_ "github.com/MTGArenaChat/gio/internal/cocoainit"
 )
 
 func init() {

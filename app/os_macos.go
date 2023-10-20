@@ -13,14 +13,14 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"gioui.org/internal/f32"
 	"gioui.org/io/clipboard"
 	"gioui.org/io/key"
 	"gioui.org/io/pointer"
 	"gioui.org/io/system"
 	"gioui.org/unit"
+	"github.com/MTGArenaChat/gio/internal/f32"
 
-	_ "gioui.org/internal/cocoainit"
+	_ "github.com/MTGArenaChat/gio/internal/cocoainit"
 )
 
 /*

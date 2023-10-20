@@ -6,7 +6,7 @@ import (
 	"errors"
 
 	"gioui.org/gpu"
-	_ "gioui.org/internal/cocoainit"
+	_ "github.com/MTGArenaChat/gio/internal/cocoainit"
 )
 
 /*

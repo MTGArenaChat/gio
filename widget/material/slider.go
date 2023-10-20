@@ -6,13 +6,13 @@ import (
 	"image"
 	"image/color"
 
-	"gioui.org/internal/f32color"
 	"gioui.org/layout"
 	"gioui.org/op"
 	"gioui.org/op/clip"
 	"gioui.org/op/paint"
 	"gioui.org/unit"
 	"gioui.org/widget"
+	"github.com/MTGArenaChat/gio/internal/f32color"
 )
 
 // Slider is for selecting a value in a range.

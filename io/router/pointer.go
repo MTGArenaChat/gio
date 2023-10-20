@@ -7,14 +7,14 @@ import (
 	"io"
 
 	"gioui.org/f32"
-	f32internal "gioui.org/internal/f32"
-	"gioui.org/internal/ops"
 	"gioui.org/io/event"
 	"gioui.org/io/key"
 	"gioui.org/io/pointer"
 	"gioui.org/io/semantic"
 	"gioui.org/io/system"
 	"gioui.org/io/transfer"
+	f32internal "github.com/MTGArenaChat/gio/internal/f32"
+	"github.com/MTGArenaChat/gio/internal/ops"
 )
 
 type pointerQueue struct {

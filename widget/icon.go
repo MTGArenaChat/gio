@@ -7,11 +7,11 @@ import (
 	"image/color"
 	"image/draw"
 
-	"gioui.org/internal/f32color"
 	"gioui.org/layout"
 	"gioui.org/op/clip"
 	"gioui.org/op/paint"
 	"gioui.org/unit"
+	"github.com/MTGArenaChat/gio/internal/f32color"
 
 	"golang.org/x/exp/shiny/iconvg"
 )

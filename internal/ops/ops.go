@@ -8,8 +8,8 @@ import (
 	"math"
 
 	"gioui.org/f32"
-	"gioui.org/internal/byteslice"
-	"gioui.org/internal/scene"
+	"github.com/MTGArenaChat/gio/internal/byteslice"
+	"github.com/MTGArenaChat/gio/internal/scene"
 )
 
 type Ops struct {

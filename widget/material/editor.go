@@ -6,13 +6,13 @@ import (
 	"image/color"
 
 	"gioui.org/font"
-	"gioui.org/internal/f32color"
 	"gioui.org/layout"
 	"gioui.org/op"
 	"gioui.org/op/paint"
 	"gioui.org/text"
 	"gioui.org/unit"
 	"gioui.org/widget"
+	"github.com/MTGArenaChat/gio/internal/f32color"
 )
 
 type EditorStyle struct {

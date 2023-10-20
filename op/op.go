@@ -70,7 +70,7 @@ import (
 	"time"
 
 	"gioui.org/f32"
-	"gioui.org/internal/ops"
+	"github.com/MTGArenaChat/gio/internal/ops"
 )
 
 // Ops holds a list of operations. Operations are stored in

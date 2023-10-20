@@ -10,7 +10,7 @@ import (
 	"unsafe"
 
 	"gioui.org/gpu"
-	"gioui.org/internal/vk"
+	"github.com/MTGArenaChat/gio/internal/vk"
 )
 
 type vkContext struct {

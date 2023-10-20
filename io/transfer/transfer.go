@@ -20,9 +20,9 @@ package transfer
 import (
 	"io"
 
-	"gioui.org/internal/ops"
 	"gioui.org/io/event"
 	"gioui.org/op"
+	"github.com/MTGArenaChat/gio/internal/ops"
 )
 
 // SourceOp registers a tag as a data source for a MIME type.

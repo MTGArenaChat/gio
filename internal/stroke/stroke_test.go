@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"testing"
 
-	"gioui.org/internal/f32"
+	"github.com/MTGArenaChat/gio/internal/f32"
 )
 
 func BenchmarkSplitCubic(b *testing.B) {

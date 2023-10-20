@@ -10,8 +10,8 @@
 package semantic
 
 import (
-	"gioui.org/internal/ops"
 	"gioui.org/op"
+	"github.com/MTGArenaChat/gio/internal/ops"
 )
 
 // LabelOp provides the content of a textual component.

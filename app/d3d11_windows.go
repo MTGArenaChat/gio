@@ -7,7 +7,7 @@ import (
 	"unsafe"
 
 	"gioui.org/gpu"
-	"gioui.org/internal/d3d11"
+	"github.com/MTGArenaChat/gio/internal/d3d11"
 )
 
 type d3d11Context struct {

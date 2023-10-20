@@ -13,8 +13,8 @@ import (
 	"unsafe"
 
 	"gioui.org/gpu/internal/driver"
-	"gioui.org/internal/gl"
 	"gioui.org/shader"
+	"github.com/MTGArenaChat/gio/internal/gl"
 )
 
 // Backend implements driver.Device.

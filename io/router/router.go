@@ -19,8 +19,6 @@ import (
 	"time"
 
 	"gioui.org/f32"
-	f32internal "gioui.org/internal/f32"
-	"gioui.org/internal/ops"
 	"gioui.org/io/clipboard"
 	"gioui.org/io/event"
 	"gioui.org/io/key"
@@ -30,6 +28,8 @@ import (
 	"gioui.org/io/system"
 	"gioui.org/io/transfer"
 	"gioui.org/op"
+	f32internal "github.com/MTGArenaChat/gio/internal/f32"
+	"github.com/MTGArenaChat/gio/internal/ops"
 )
 
 // Router is a Queue implementation that routes events

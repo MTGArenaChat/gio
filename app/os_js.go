@@ -12,7 +12,7 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"gioui.org/internal/f32color"
+	"github.com/MTGArenaChat/gio/internal/f32color"
 
 	"gioui.org/f32"
 	"gioui.org/io/clipboard"

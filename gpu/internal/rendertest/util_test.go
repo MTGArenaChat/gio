@@ -19,9 +19,9 @@ import (
 
 	"gioui.org/f32"
 	"gioui.org/gpu/headless"
-	"gioui.org/internal/f32color"
 	"gioui.org/op"
 	"gioui.org/op/paint"
+	"github.com/MTGArenaChat/gio/internal/f32color"
 )
 
 var (

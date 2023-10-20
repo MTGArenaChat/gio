@@ -9,11 +9,11 @@ import (
 	"math"
 
 	"gioui.org/f32"
-	f32internal "gioui.org/internal/f32"
-	"gioui.org/internal/ops"
-	"gioui.org/internal/scene"
-	"gioui.org/internal/stroke"
 	"gioui.org/op"
+	f32internal "github.com/MTGArenaChat/gio/internal/f32"
+	"github.com/MTGArenaChat/gio/internal/ops"
+	"github.com/MTGArenaChat/gio/internal/scene"
+	"github.com/MTGArenaChat/gio/internal/stroke"
 )
 
 // Op represents a clip area. Op intersects the current clip area with

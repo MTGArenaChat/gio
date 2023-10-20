@@ -134,7 +134,7 @@ import (
 	"unicode/utf16"
 	"unsafe"
 
-	"gioui.org/internal/f32color"
+	"github.com/MTGArenaChat/gio/internal/f32color"
 
 	"gioui.org/f32"
 	"gioui.org/io/clipboard"

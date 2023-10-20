@@ -8,7 +8,6 @@ import (
 	"math"
 
 	"gioui.org/font"
-	"gioui.org/internal/f32color"
 	"gioui.org/io/semantic"
 	"gioui.org/layout"
 	"gioui.org/op"
@@ -17,6 +16,7 @@ import (
 	"gioui.org/text"
 	"gioui.org/unit"
 	"gioui.org/widget"
+	"github.com/MTGArenaChat/gio/internal/f32color"
 )
 
 type ButtonStyle struct {

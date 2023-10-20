@@ -3,9 +3,9 @@
 package clipboard
 
 import (
-	"gioui.org/internal/ops"
 	"gioui.org/io/event"
 	"gioui.org/op"
+	"github.com/MTGArenaChat/gio/internal/ops"
 )
 
 // Event is generated when the clipboard content is requested.

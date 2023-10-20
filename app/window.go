@@ -16,8 +16,6 @@ import (
 	"gioui.org/f32"
 	"gioui.org/font/gofont"
 	"gioui.org/gpu"
-	"gioui.org/internal/debug"
-	"gioui.org/internal/ops"
 	"gioui.org/io/event"
 	"gioui.org/io/key"
 	"gioui.org/io/pointer"
@@ -30,6 +28,8 @@ import (
 	"gioui.org/unit"
 	"gioui.org/widget"
 	"gioui.org/widget/material"
+	"github.com/MTGArenaChat/gio/internal/debug"
+	"github.com/MTGArenaChat/gio/internal/ops"
 
 	_ "gioui.org/app/internal/log"
 )

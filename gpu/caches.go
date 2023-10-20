@@ -5,7 +5,7 @@ package gpu
 import (
 	"fmt"
 
-	"gioui.org/internal/f32"
+	"github.com/MTGArenaChat/gio/internal/f32"
 )
 
 type resourceCache struct {

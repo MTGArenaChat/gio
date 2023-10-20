@@ -46,6 +46,10 @@ type Config struct {
 	// decoHeight is the height of the fallback decoration for platforms such
 	// as Wayland that may need fallback client-side decorations.
 	decoHeight unit.Dp
+
+	// Tell the window to keep rendering above other ones
+	AlwaysOnTop bool
+	//Some kind of transparency as well
 }
 
 // ConfigEvent is sent whenever the configuration of a Window changes.

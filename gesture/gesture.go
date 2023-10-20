@@ -16,12 +16,12 @@ import (
 	"time"
 
 	"gioui.org/f32"
-	"gioui.org/internal/fling"
 	"gioui.org/io/event"
 	"gioui.org/io/key"
 	"gioui.org/io/pointer"
 	"gioui.org/op"
 	"gioui.org/unit"
+	"github.com/MTGArenaChat/gio/internal/fling"
 )
 
 // The duration is somewhat arbitrary.

@@ -3,8 +3,8 @@ package system
 import (
 	"strings"
 
-	"gioui.org/internal/ops"
 	"gioui.org/op"
+	"github.com/MTGArenaChat/gio/internal/ops"
 )
 
 // ActionAreaOp makes the current clip area available for

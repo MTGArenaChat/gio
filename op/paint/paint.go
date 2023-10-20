@@ -10,9 +10,9 @@ import (
 	"math"
 
 	"gioui.org/f32"
-	"gioui.org/internal/ops"
 	"gioui.org/op"
 	"gioui.org/op/clip"
+	"github.com/MTGArenaChat/gio/internal/ops"
 )
 
 // ImageOp sets the brush to an image.

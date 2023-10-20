@@ -10,10 +10,10 @@ import (
 	"time"
 
 	"gioui.org/f32"
-	"gioui.org/internal/ops"
 	"gioui.org/io/event"
 	"gioui.org/io/key"
 	"gioui.org/op"
+	"github.com/MTGArenaChat/gio/internal/ops"
 )
 
 // Event is a pointer event.
